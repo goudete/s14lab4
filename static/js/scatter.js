@@ -1,7 +1,7 @@
 /**
- * @class Donut
+ * @class Scatter
  */
-class Donut {
+class Scatter {
 
     // Elements
     svg = null;
@@ -13,13 +13,6 @@ class Donut {
     gMargin = {top: 0, right: 0, bottom: 0, left: 0};
     gW = this.svgW - (this.gMargin.right + this.gMargin.left);
     gH = this.svgH - (this.gMargin.top + this.gMargin.bottom);
-
-    // Tools
-    scX = d3.scaleLinear()
-            .range([0, this.gW]);
-    scY = d3.scaleLinear()
-            .range([this.gH, 0]);
-    donut = d3.pie()
 
     /*
     Constructor
@@ -51,22 +44,6 @@ class Donut {
             .attr('class', 'container')
             .style('transform', `translate(${vis.gMargin.left}px, ${vis.gMargin.top}px)`);
 
-        // Append axes
-        vis.xAxisG = vis.g.append('g')
-            .attr('class', 'axis axisX')
-            .style('transform', `translateY(${vis.gH + 15}px)`);
-        vis.xAxisG.append('text')
-            .attr('class', 'label labelX')
-            .style('transform', `translate(${vis.gW / 2}px, 40px)`)
-            .text('Age');
-        vis.yAxisG = vis.g.append('g')
-            .attr('class', 'axis axisY')
-            .style('transform', 'translateX(-15px)');
-        vis.yAxisG.append('text')
-            .attr('class', 'label labelY')
-            .style('transform', `rotate(-90deg) translate(-${vis.gH / 2}px, -30px)`)
-            .text('Totals');
-            
         // Now wrangle
         vis.wrangle();
     }
